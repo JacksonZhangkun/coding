@@ -41,7 +41,7 @@ bool isUniqueChar22(string str)
 //Solution 1.3:  Sort the string in O(NlogN) and check the neighboring characters
 
 //Solution 1.4:  two for loop like the bubble sort
-//time complexity: O(N)
+//time complexity: O(N^2)
 bool isUniqueChar24(string str)
 {
 	unsigned i,j;
