@@ -209,21 +209,3 @@ rb_node_t *rb_insert(key_t key, data_t data, rb_node_t *root)
     return rb_insert_rebalance(node, root);
 }
 
-rb_node_t *rb_delete(ket_t key, rb_node_t *root)
-{
-    rb_node_t *child, *parent, *old, *left, *node;
-    color_t color;
-
-    if (!(node = rb_search_auxiliary(key, root, NULL)))
-    {
-	printf("key %d is not exist! \n", key);
-	return root;
-    }
-
-    old = node;
-
-    if (node->lchild && node->rchild)
-    {
-	
-    }
-}
