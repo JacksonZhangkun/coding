@@ -6,11 +6,12 @@
 #define RH -1  // right high
 
 typedef struct BiTNode{
-    int data;
+    int data;  //存放的数据
     int bf;    //balance factor
     struct BiTNode *lchild, *rchild;
 }BiTNode, *BiTree;
 
+// 右旋
 void right_rotate(BiTree *p){
     BiTree L;
     L = (*p)->lchild;
@@ -19,6 +20,7 @@ void right_rotate(BiTree *p){
     (*p) = L;
 }
 
+// 左旋
 void left_rotate(BiTree *p){
     BiTree R;
     R = (*p)->rchild;
@@ -140,7 +142,7 @@ int insert_avl(BiTree *T, int value, int *taller){
     return 1;
 }
 
-
+// 前序遍历
 void pre_order_traverse(BiTree T){
     if (T == NULL)
 	return;
@@ -149,6 +151,7 @@ void pre_order_traverse(BiTree T){
     pre_order_traverse(T->rchild);
 }
 
+// 中序遍历
 void in_order_traverse(BiTree T){
     if (T == NULL)
 	return;
@@ -157,6 +160,7 @@ void in_order_traverse(BiTree T){
     in_order_traverse(T->rchild);
 }
 
+// 后序遍历
 void post_order_traverse(BiTree T){
     if (T == NULL)
 	return;
