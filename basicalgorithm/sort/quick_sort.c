@@ -24,12 +24,16 @@ int partition(int *a, int low, int high)
 
     while (low <= high)
     {
-	while (low <= high && a[low] < pivotkey)
+	while (a[low] < pivotkey)
 	    low++;
-	while (low <= high && a[high] > pivotkey)
+	while (a[high] > pivotkey)
 	    high--;
 	if (low <= high)         // 这个地方千万要注意，一开始老是出错就是因为这里
+	{
 	    swap(&a[low], &a[high]);
+	    low++;
+	    high--;
+	}
     }
     swap(&a[i], &a[high]);
     return high;
