@@ -1,23 +1,10 @@
+//source here
+//source here
 #include <stdlib.h>
 #include <stdio.h>
 
-struct point
-{
-    long x;
-    long y;
-};
+long data[50000][2];
 
-struct point data[50000];
-
-long d(struct point &a,struct point &b)
-{
-    return (a.x - b.x)*(a.x - b.x) + (a.y - b.y)*(a.y - b.y);
-}
-
-double rx(struct point &a,struct point &b)
-{
-    return (double)(a.y + b.y)*(b.y - a.y) / (b.x - a.x) / 2.0 + (a.x + b.x) / 2.0;
-}
 int main()
 {
     long T;
@@ -26,29 +13,30 @@ int main()
     int c = 1;
     while (T--)
     {
-	scanf("%d", &N);
-	long i = 0;
+    scanf("%d", &N);
+    long i = 0;
 	while (N--){
-	    scanf("%ld %ld", &data[i].x, &data[i].y);
+	    scanf("%ld %ld", &data[i][0], &data[i][1]);
 	    i++;
 	}
-	int max;
-	max = 0;
-	struct point p1, p2;
-	int k, l;
+    N = i;
+	long max = 0;
+    long x1 , y1 , x2 ,y2;
+    int k, l;
 	for (k = 0; k < N; k++)
 	    for (l = k + 1; l < N; l++)
 	    {
-		if (d(data[k], data[l]) > max)
-		{
-		    p1 = data[k];
-		    p2 = data[l];
-		}
+            long tmp = (data[k][0] - data[l][0]) * (data[k][0] - data[l][0]) + (data[k][1] - data[l][1]) * (data[k][1] - data[l][1]);
+		    if (tmp > max)
+		    {
+                x1 = data[k][0]; y1 = data[k][1];
+                x2 = data[l][0]; y2 = data[l][1];
+                max = tmp;
+		    }
 	    }
-	
-	double x;
-	x = rx(p1, p2);
-	printf("Case #%f:", x);
+    double x;
+    x = (y1+y2)*(y2-y1)*0.5/(x2-x1) + (x1+x2)*0.5;
+	printf("Case #%d: %f", c++, x);
     }
     return 0;
 }
